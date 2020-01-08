@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Function: Generators intro</title>
+</head>
+<body>
+
+</body>
+
+<script>
+  function* genNames() {
+    console.log('Chamando primeiro nome!');
+    yield 'Helder';
+
+    console.log('Chamando segundo nome!');
+    yield 'Paula';
+
+    console.log('Chamando terceiro nome!');
+    yield 'Panda';
+  }
+
+  const names = genNames();
+  console.log(names); // => Generator - Status: "suspended"
+
+  console.log(names.next()); // => { value: "Helder", done: false }
+  console.log(names.next()); // => { value: "Paula", done: false }
+  console.log(names.next()); // => { value: "Panda", done: false }
+</script>
+</html>
