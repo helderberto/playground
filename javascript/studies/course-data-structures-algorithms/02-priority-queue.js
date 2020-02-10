@@ -33,10 +33,10 @@ function createPriorityQueue() {
 
 module.exports = createPriorityQueue;
 
-const q = createPriorityQueue();
-q.enqueue('Helder');
-q.enqueue('Paula');
-q.enqueue('Panda', true);
-console.log(q.peek()); // => Panda
-q.dequeue();
-console.log(q.peek()); // => Helder
+// const q = createPriorityQueue();
+// q.enqueue('Helder');
+// q.enqueue('Paula');
+// q.enqueue('Panda', true);
+// console.log(q.peek()); // => Panda
+// q.dequeue();
+// console.log(q.peek()); // => Helder
