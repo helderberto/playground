@@ -23,15 +23,17 @@ function createQueue() {
   }
 }
 
-const q = createQueue();
-console.log(q.isEmpty()); // => true
-q.enqueue('Helder');
-q.enqueue('Paula');
-q.enqueue('Panda');
-q.enqueue('Pantufa');
-console.log(q.peek()) // => Helder
-console.log(q.length); // => 4
-q.dequeue(); // => Helder
-console.log(q.peek()); // => Paula
-q.dequeue();
-console.log(q.peek()); // => Panda
+module.exports = createQueue;
+
+// const q = createQueue();
+// console.log(q.isEmpty()); // => true
+// q.enqueue('Helder');
+// q.enqueue('Paula');
+// q.enqueue('Panda');
+// q.enqueue('Pantufa');
+// console.log(q.peek()) // => Helder
+// console.log(q.length); // => 4
+// q.dequeue(); // => Helder
+// console.log(q.peek()); // => Paula
+// q.dequeue();
+// console.log(q.peek()); // => Panda
