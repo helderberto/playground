@@ -1,12 +1,20 @@
 import React from 'react';
 
-const User = ({ user }) => {
+interface IUser {
+  name: string;
+  email?: string; // Optional field
+}
+
+interface Props {
+  user: IUser;
+}
+
+const User: React.FC<Props> = ({ user, children }) => {
   return (
     <div>
       <strong>Nome: </strong> {user.name} <br />
-      <strong>E-mail: </strong> {user.name} <br />
-      <br />
-      <br />
+      <strong>E-mail: </strong> {user.email || 'Não possui e-mail'} <br />
+      {children}
     </div>
   );
 };
