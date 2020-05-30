@@ -1,0 +1,15 @@
+{
+  "name": "solid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon dist/*.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0",
+    "typescript": "^3.9.3"
+  }
+}
