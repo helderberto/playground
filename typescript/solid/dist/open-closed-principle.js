@@ -1,9 +1,14 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var SendGridService = /** @class */ (function () {
     function SendGridService() {
     }
     SendGridService.prototype.sendMail = function (mail) {
         console.log('[sendgrid] submit: ', mail);
+        return Promise.resolve({
+            result: 'Success',
+            message: 'Submitted via [sendgrid]!'
+        });
     };
     return SendGridService;
 }());
@@ -12,18 +17,24 @@ var MailChimpService = /** @class */ (function () {
     }
     MailChimpService.prototype.sendMail = function (mail) {
         console.log('[mailchimp] submit:', mail);
+        return Promise.resolve({
+            result: 'Success',
+            message: 'Submitted via [mailchimp]!'
+        });
     };
     return MailChimpService;
 }());
-var sendGrid = new SendGridService();
-sendGrid.sendMail({
-    from: 'helder@mail.com',
+var sendGridService = new SendGridService();
+var mailChimpService = new MailChimpService();
+var sendGridPromise = sendGridService.sendMail({
     to: 'helder@mail.com',
+    from: 'john@mail.com',
     body: 'lorem ipsum'
 });
-var mailChimp = new MailChimpService();
-mailChimp.sendMail({
-    from: 'helder2@mail.com',
-    to: 'helder2@mail.com',
-    body: 'lorem ipsum 2'
+console.log('sendGridPromise', sendGridPromise);
+var mailChimpPromise = mailChimpService.sendMail({
+    to: 'helder@mail.com',
+    from: 'john@mail.com',
+    body: 'lorem ipsum'
 });
+console.log('mailChimpPromise', mailChimpPromise);

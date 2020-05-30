@@ -1,37 +1,40 @@
-type Mail = {
-  from: string,
-  to: string,
-  body: string,
-}
+import { MailService, EmailTransmissionResult, Mail } from './liskov-substition-principle';
 
-type EmailTransmissionResult = void;
-
-interface EmailService {
-  sendMail: (mail: Mail) => EmailTransmissionResult;
-}
-
-class SendGridService implements EmailService {
-  sendMail(mail: Mail): EmailTransmissionResult {
+class SendGridService implements MailService {
+  sendMail(mail: Mail): Promise<EmailTransmissionResult> {
     console.log('[sendgrid] submit: ', mail);
+
+    return Promise.resolve({
+      result: 'Success',
+      message: 'Submitted via [sendgrid]!'
+    });
   }
 }
 
-class MailChimpService implements EmailService {
-  sendMail(mail: Mail): EmailTransmissionResult {
+class MailChimpService implements MailService {
+  sendMail(mail: Mail): Promise<EmailTransmissionResult> {
     console.log('[mailchimp] submit:', mail);
+
+    return Promise.resolve({
+      result: 'Success',
+      message: 'Submitted via [mailchimp]!'
+    });
   }
 }
 
-const sendGrid = new SendGridService()
-sendGrid.sendMail({
-  from: 'helder@mail.com',
+const sendGridService = new SendGridService();
+const mailChimpService = new MailChimpService();
+
+const sendGridPromise = sendGridService.sendMail({
   to: 'helder@mail.com',
+  from: 'john@mail.com',
   body: 'lorem ipsum'
 });
+console.log('sendGridPromise', sendGridPromise);
 
-const mailChimp = new MailChimpService();
-mailChimp.sendMail({
-  from: 'helder2@mail.com',
-  to: 'helder2@mail.com',
-  body: 'lorem ipsum 2'
+const mailChimpPromise = mailChimpService.sendMail({
+  to: 'helder@mail.com',
+  from: 'john@mail.com',
+  body: 'lorem ipsum'
 });
+console.log('mailChimpPromise', mailChimpPromise);
