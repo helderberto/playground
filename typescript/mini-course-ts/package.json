@@ -1,0 +1,11 @@
+{
+  "name": "mini-course-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.3"
+  }
+}
