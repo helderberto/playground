@@ -18,6 +18,26 @@ function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
   return { ...todo, ...fieldsToUpdate }
 }
 
-const newTodo: Todo = updateTodo(todo, { completed: true });
+const todo2: Todo = updateTodo(todo, { completed: true });
 
-console.log(newTodo);
+console.log(todo2);
+
+// Pick specific fields
+type TodoPreview = Pick<Todo, 'title' | 'description'>
+
+const todo3: TodoPreview = {
+  title: 'Upar Minecraft Dungeons',
+  description: 'Lorem Ipsum'
+};
+
+console.log('todo3', todo3);
+
+// Omit specific fields
+type TodoPreview2 = Omit<Todo, 'description'>
+
+const todo4: TodoPreview2 = {
+  title: 'Lorem Ipsum',
+  completed: true
+};
+
+console.log('todo4', todo4);

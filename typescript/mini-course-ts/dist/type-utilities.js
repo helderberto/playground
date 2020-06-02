@@ -20,5 +20,15 @@ console.log(todo);
 function updateTodo(todo, fieldsToUpdate) {
     return __assign(__assign({}, todo), fieldsToUpdate);
 }
-var newTodo = updateTodo(todo, { completed: true });
-console.log(newTodo);
+var todo2 = updateTodo(todo, { completed: true });
+console.log(todo2);
+var todo3 = {
+    title: 'Upar Minecraft Dungeons',
+    description: 'Lorem Ipsum'
+};
+console.log('todo3', todo3);
+var todo4 = {
+    title: 'Lorem Ipsum',
+    completed: true
+};
+console.log('todo4', todo4);
