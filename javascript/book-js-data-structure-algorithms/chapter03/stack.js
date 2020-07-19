@@ -1,40 +1,36 @@
-class Stack {
-  constructor(items = []) {
-    this._items = items;
+function Stack() {
+  let items = [];
+
+  this.push = function (element) {
+    items.push(element);
   }
 
-  push(element) {
-    this._items.push(element);
+  this.pop = function () {
+    return items.pop();
   }
 
-  peek() {
-    if (this.isEmpty()) {
-      throw Error('Empty Stack.');
-    }
-
-    return this._items[this._items.length - 1];
+  this.size = function () {
+    return items.length;
   }
 
-  pop() {
-    return this._items.pop();
+  this.isEmpty = function () {
+    return items.length === 0;
   }
 
-  isEmpty() {
-    return this._items.length === 0;
+  this.peek = function () {
+    return items[items.length - 1];
   }
 
-  clear() {
-    this._items = [];
-  }
-
-  size() {
-    return this._items.length;
+  this.clear = function () {
+    items = [];
   }
 }
 
-const books = new Stack();
-books.push('Test 01');
-books.push('Test 02');
-console.log(books.size());
-books.pop();
-console.log(books.peek()); // => Output: Test 01
+// const books = new Stack();
+// books.push('Test 01');
+// books.push('Test 02');
+// console.log(books.size());
+// books.pop();
+// console.log(books.peek()); // => Output: Test 01
+
+module.exports = Stack;
