@@ -18,4 +18,6 @@ function divideBy2(decNumber) {
   return binaryString;
 }
 
-console.log(divideBy2(125));
+console.log(divideBy2(125)); // => 1111101
+
+module.exports = divideBy2;
