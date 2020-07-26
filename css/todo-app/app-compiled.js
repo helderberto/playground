@@ -85,45 +85,51 @@ const {
   connect
 } = ReactRedux;
 
-const Link = ({
+const Radio = ({
   active,
   children,
-  onClick
+  onChange
 }) => {
-  if (active) {
-    return /*#__PURE__*/React.createElement("span", null, children);
-  }
-
-  return /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onClick();
+  return /*#__PURE__*/React.createElement("label", {
+    className: "filter"
+  }, /*#__PURE__*/React.createElement("input", {
+    checked: active,
+    type: "radio",
+    name: "filter",
+    className: "filter__radio",
+    onChange: e => {
+      onChange();
     }
-  }, children);
+  }), /*#__PURE__*/React.createElement("span", {
+    className: `filter__label--${children.toLowerCase()}`
+  }, children));
 };
 
-const mapStateToLinkProps = (state, ownProps) => {
+const mapStateToRadioProps = (state, ownProps) => {
   return {
     active: ownProps.filter === state.visibilityFilter
   };
 };
 
-const mapDispatchToLinkProps = (dispatch, ownProps) => {
+const mapDispatchToRadioProps = (dispatch, ownProps) => {
   return {
-    onClick: () => {
+    onChange: () => {
       dispatch(setVisibilityFilter(ownProps.filter));
     }
   };
 };
 
-const FilterLink = connect(mapStateToLinkProps, mapDispatchToLinkProps)(Link);
+const FilterRadio = connect(mapStateToRadioProps, mapDispatchToRadioProps)(Radio);
 
-const Footer = () => /*#__PURE__*/React.createElement("p", null, "Show:", ' ', /*#__PURE__*/React.createElement(FilterLink, {
+const Footer = () => /*#__PURE__*/React.createElement("fieldset", {
+  className: "filters"
+}, /*#__PURE__*/React.createElement("legend", {
+  className: "filters__title"
+}, "Show:"), /*#__PURE__*/React.createElement(FilterRadio, {
   filter: "SHOW_ALL"
-}, "All"), ', ', /*#__PURE__*/React.createElement(FilterLink, {
+}, "All"), /*#__PURE__*/React.createElement(FilterRadio, {
   filter: "SHOW_ACTIVE"
-}, "Active"), ', ', /*#__PURE__*/React.createElement(FilterLink, {
+}, "Active"), /*#__PURE__*/React.createElement(FilterRadio, {
   filter: "SHOW_COMPLETED"
 }, "Completed"));
 
