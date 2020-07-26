@@ -182,14 +182,28 @@ let AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
-      <input ref={node => {
-        input = node;
-      }} />
-      <button onClick={() => {
-        dispatch(addTodo(input.value));
-        input.value = '';
-      }}>
+    <div className="add-todo">
+      <input
+        ref={node => {
+          input = node;
+        }}
+        className="add-todo__input"
+        placeholder="new todo"
+        onKeyUp={(e) => {
+          const RETURN_KEY_CODE = 13;
+          if (e.keyCode === RETURN_KEY_CODE) {
+            dispatch(addTodo(input.value));
+            input.value = '';
+          }
+        }}
+      />
+      <button
+        onClick={() => {
+          dispatch(addTodo(input.value));
+          input.value = '';
+        }}
+        className="add-todo__button"
+      >
         Add Todo
       </button>
     </div>

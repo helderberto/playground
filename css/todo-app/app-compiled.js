@@ -151,15 +151,28 @@ let AddTodo = ({
   dispatch
 }) => {
   let input;
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "add-todo"
+  }, /*#__PURE__*/React.createElement("input", {
     ref: node => {
       input = node;
+    },
+    className: "add-todo__input",
+    placeholder: "new todo",
+    onKeyUp: e => {
+      const RETURN_KEY_CODE = 13;
+
+      if (e.keyCode === RETURN_KEY_CODE) {
+        dispatch(addTodo(input.value));
+        input.value = '';
+      }
     }
   }), /*#__PURE__*/React.createElement("button", {
     onClick: () => {
       dispatch(addTodo(input.value));
       input.value = '';
-    }
+    },
+    className: "add-todo__button"
   }, "Add Todo"));
 };
 
