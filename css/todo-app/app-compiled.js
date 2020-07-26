@@ -1,5 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -145,8 +147,12 @@ const Todo = ({
 const TodoList = ({
   todos,
   onTodoClick
-}) => /*#__PURE__*/React.createElement("ul", {
-  className: "todo-list"
+}) => /*#__PURE__*/React.createElement(ReactCSSTransitionGroup, {
+  component: "ul",
+  className: "todo-list",
+  transitionName: "todo-transition",
+  transitionEnterTimeout: 70,
+  transitionLeaveTimeout: 70
 }, todos.map(todo => /*#__PURE__*/React.createElement(Todo, _extends({
   key: todo.id
 }, todo, {

@@ -1,3 +1,5 @@
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -164,7 +166,13 @@ const TodoList = ({
   todos,
   onTodoClick
 }) => (
-  <ul className="todo-list">
+  <ReactCSSTransitionGroup
+    component="ul"
+    className="todo-list"
+    transitionName="todo-transition"
+    transitionEnterTimeout={70}
+    transitionLeaveTimeout={70}
+  >
     {todos.map(todo =>
       <Todo
         key={todo.id}
@@ -172,7 +180,7 @@ const TodoList = ({
         onClick={() => onTodoClick(todo.id)}
       />
     )}
-  </ul>
+  </ReactCSSTransitionGroup>
 );
 
 let AddTodo = ({ dispatch }) => {
