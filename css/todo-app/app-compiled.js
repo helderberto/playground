@@ -133,15 +133,15 @@ const Todo = ({
   text
 }) => /*#__PURE__*/React.createElement("li", {
   onClick: onClick,
-  style: {
-    textDecoration: completed ? 'line-through' : 'none'
-  }
+  className: completed ? "todo-list__item--completed" : "todo-list__item--active"
 }, text);
 
 const TodoList = ({
   todos,
   onTodoClick
-}) => /*#__PURE__*/React.createElement("ul", null, todos.map(todo => /*#__PURE__*/React.createElement(Todo, _extends({
+}) => /*#__PURE__*/React.createElement("ul", {
+  className: "todo-list"
+}, todos.map(todo => /*#__PURE__*/React.createElement(Todo, _extends({
   key: todo.id
 }, todo, {
   onClick: () => onTodoClick(todo.id)
