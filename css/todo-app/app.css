@@ -18,13 +18,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .todo-app {
   background-color: #ecf0f1;
   width: 100%;
-  border-radius: 4px 4px 0 0;
+  border-radius: 0 0 4px 4px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
   max-width: calc(100% - var(--gutter));
   display: flex;
@@ -37,9 +37,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  order: -1;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 [class^="todo-list__item"] {
@@ -51,7 +50,7 @@ body {
   letter-spacing: 2px;
   box-sizing: border-box;
   padding: 27px 33px 0 78px;
-  box-shadow: 0 1px 0 0 #e6e6e6, 0 2px 0 0 #ffffff;
+  box-shadow: 0 2px 0 0 #ffffff, 0 1px 0 0 #e6e6e6;
   background: url("https://jsbin-user-assets.s3.amazonaws.com/GarthDB/box.svg")
     28px 16px no-repeat;
 }
@@ -123,7 +122,8 @@ body {
   width: calc(100% + var(--gutter));
   font-weight: 700;
   border: 0;
-  border-radius: 3px 3px 0;
+  border-radius: 0 0 3px 3px;
+  order: -1;
 }
 
 .filters__title,
@@ -195,4 +195,29 @@ body {
 
 .filter__radio:checked + .filter__label--completed::before {
   background: #16a085;
+}
+
+@media only screen and (min-width: 730px) {
+  .container {
+    max-width: 720px;
+    justify-content: flex-end;
+  }
+
+  .todo-app {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .todo-list {
+    order: -1;
+    flex-direction: column;
+  }
+
+  [class^="todo-list__item"] {
+    box-shadow: 0 1px 0 0 #e6e6e6, 0 2px 0 0 #ffffff;
+  }
+
+  .filters {
+    border-radius: 3px 3px 0 0;
+    order: 0;
+  }
 }
