@@ -1,0 +1,19 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "browser-sync start --server --files '*.css,*.js'",
+    "build-js:watch": "babel app.js --watch --out-file app-compiled.js"
+  },
+  "keywords": [],
+  "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-react": "^7.10.4",
+    "browser-sync": "^2.26.10"
+  }
+}

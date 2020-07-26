@@ -241,7 +241,7 @@ const VisibleTodoList = connect(
 )(TodoList);
 
 const TodoApp = () => (
-  <div>
+  <div className="todo-app">
     <AddTodo />
     <VisibleTodoList />
     <Footer />
